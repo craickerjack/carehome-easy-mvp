@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Meal Planning</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html" class="active">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Nutrition & Meal Planning</h2>
+    <p>Create weekly menus, track dietary restrictions, and generate shopping lists.</p>
+
+    <button onclick="showMenuExample()">Create New Menu</button>
+    <hr />
+
+    <div id="menu-example" style="display:none; background:#e6f7ff; border:1px solid #91d5ff; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Menu Entry</h3>
+      <ul>
+        <li><strong>Date:</strong> Feb 26, 2025</li>
+        <li><strong>Breakfast:</strong> Scrambled Eggs, Toast, Fruit</li>
+        <li><strong>Lunch:</strong> Chicken Caesar Salad</li>
+        <li><strong>Dinner:</strong> Baked Salmon, Steamed Veggies</li>
+      </ul>
+    </div>
+
+    <script>
+      function showMenuExample() {
+        document.getElementById('menu-example').style.display = 'block';
+      }
+    </script>
+
+    <h3>This Week's Menu</h3>
+    <ul>
+      <li><strong>Mon:</strong> Oatmeal (B), Grilled Chicken Salad (L), Salmon & Veggies (D)</li>
+      <li><strong>Tue:</strong> Pancakes (B), Soup & Sandwich (L), Pasta w/ Marinara (D)</li>
+      <li>... etc. ...</li>
+    </ul>
+
+    <h3>Special Diets</h3>
+    <ul>
+      <li>Mary Davis - Low Sodium</li>
+      <li>John Shepherd - Diabetic</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

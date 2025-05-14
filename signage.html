@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CareHome Easy - Signage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html" class="active">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Digital Signage / Bulletin</h2>
+    <p>Show daily schedules, menus, and announcements on a TV or tablet for residents and visitors.</p>
+
+    <button onclick="showSignageExample()">Add New Announcement</button>
+    <hr />
+
+    <div id="signage-example" style="display:none; background:#e6f7ff; border:1px solid #91d5ff; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Announcement</h3>
+      <ul>
+        <li><strong>Title:</strong> Bingo Night!</li>
+        <li><strong>Date:</strong> Feb 28, 2025</li>
+        <li><strong>Details:</strong> Join us in the rec room at 7 PM for fun and prizes.</li>
+      </ul>
+    </div>
+
+    <script>
+      function showSignageExample() {
+        document.getElementById('signage-example').style.display = 'block';
+      }
+    </script>
+
+    <h3>Current Announcements</h3>
+    <ul>
+      <li>Welcome to CareHome Easy - We're glad you're here!</li>
+      <li>Daily Exercise: 8 AM in the Recreation Room</li>
+      <li>This Week's Menu: See Meal Plans Page</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

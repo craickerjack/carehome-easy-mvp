@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Responsive nav styles */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2em;
+      color: #35424a;
+      position: absolute;
+      right: 2rem;
+      top: 1.2rem;
+      z-index: 1001;
+      cursor: pointer;
+    }
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #35424a;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        padding: 1em 0;
+        z-index: 1000;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      nav {
+        position: relative;
+      }
+      nav a {
+        margin: 0.5em 0;
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">&#9776;</button>
+      <div class="nav-backdrop" onclick="closeNav()"></div>
+      <div class="nav-links">
+        <a href="index.html" class="active" onclick="closeNav()">Dashboard</a>
+        <a href="residents.html" onclick="closeNav()">Residents</a>
+        <a href="family.html" onclick="closeNav()">Family Comm</a>
+        <a href="compliance.html" onclick="closeNav()">Compliance</a>
+        <a href="reports.html" onclick="closeNav()">Reports</a>
+        <a href="medication.html" onclick="closeNav()">Medication</a>
+        <a href="billing.html" onclick="closeNav()">Billing</a>
+        <a href="mealplanning.html" onclick="closeNav()">Meal Plans</a>
+        <a href="appointment.html" onclick="closeNav()">Activities</a>
+        <a href="inventory.html" onclick="closeNav()">Inventory</a>
+        <a href="stafftraining.html" onclick="closeNav()">Staff Training</a>
+        <a href="incidents.html" onclick="closeNav()">Incidents</a>
+        <a href="externalproviders.html" onclick="closeNav()">Providers</a>
+        <a href="signage.html" onclick="closeNav()">Signage</a>
+        <a href="admission.html" onclick="closeNav()">Admission</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Dashboard</h2>
+    <p>Welcome to the CareHome Easy MVP! This dashboard gives you a quick snapshot of daily operations.</p>
+
+    <ul style="list-style: none; padding-left: 0;">
+      <li class="expandable"><button class="toggle-btn" aria-label="Expand/Collapse" style="margin-right:8px;">+</button><strong>Residents On-Site:</strong> 12
+        <ul class="details" style="display:none; list-style: none; padding-left: 1.5em; text-align: center;">
+          <li>Mary Davis</li>
+          <li>John Shepherd</li>
+          <li>Linda Gomez</li>
+          <li>Jack Mercer</li>
+          <li style="margin-top: 10px;"><a href="residents.html" class="details-btn">View Details</a></li>
+        </ul>
+      </li>
+      <li class="expandable"><button class="toggle-btn" aria-label="Expand/Collapse" style="margin-right:8px;">+</button><strong>Upcoming Appointments:</strong> 3 today
+        <ul class="details" style="display:none; list-style: none; padding-left: 1.5em; text-align: center;">
+          <li>Mary Davis - Doctor Visit (Feb 26, 10 AM)</li>
+          <li>Linda Gomez - Physical Therapy (Feb 28, 2 PM)</li>
+          <li style="margin-top: 10px;"><a href="appointment.html" class="details-btn">View Details</a></li>
+        </ul>
+      </li>
+      <li class="expandable"><button class="toggle-btn" aria-label="Expand/Collapse" style="margin-right:8px;">+</button><strong>Medication Alerts:</strong> 1 refill needed
+        <ul class="details" style="display:none; list-style: none; padding-left: 1.5em; text-align: center;">
+          <li>John Shepherd's refill is due in 3 days!</li>
+          <li style="margin-top: 10px;"><a href="medication.html" class="details-btn">View Details</a></li>
+        </ul>
+      </li>
+      <li class="expandable"><button class="toggle-btn" aria-label="Expand/Collapse" style="margin-right:8px;">+</button><strong>Compliance Tasks Due:</strong> 2 tasks pending
+        <ul class="details" style="display:none; list-style: none; padding-left: 1.5em; text-align: center;">
+          <li>Fire Drill: Overdue by 5 days</li>
+          <li>Staff Ratio Report: Due next week</li>
+          <li style="margin-top: 10px;"><a href="compliance.html" class="details-btn">View Details</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <style>
+      .details-btn {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 16px;
+        background: #1976d2;
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.95em;
+        transition: background 0.2s;
+      }
+      .details-btn:hover {
+        background: #12509c;
+      }
+    </style>
+
+    <script>
+      document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const details = btn.parentElement.querySelector('.details');
+          if (details) {
+            const isOpen = details.style.display === 'block';
+            details.style.display = isOpen ? 'none' : 'block';
+            btn.textContent = isOpen ? '+' : '−';
+          }
+        });
+      });
+
+      function toggleNav() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.nav-backdrop').classList.toggle('show');
+      }
+      function closeNav() {
+        document.querySelector('.nav-links').classList.remove('show');
+        document.querySelector('.nav-backdrop').classList.remove('show');
+      }
+      // Optional: Hide menu when clicking outside on mobile
+      document.addEventListener('click', function(e) {
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelector('.nav-links');
+        const navToggle = document.querySelector('.nav-toggle');
+        if (window.innerWidth <= 800 && navLinks.classList.contains('show')) {
+          if (!nav.contains(e.target)) {
+            navLinks.classList.remove('show');
+            document.querySelector('.nav-backdrop').classList.remove('show');
+          }
+        }
+      });
+    </script>
+
+    <p>Select any module from the top menu to see more details.</p>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

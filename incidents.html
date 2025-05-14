@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Incidents</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html" class="active">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Incident Management & Reporting</h2>
+    <p>Log resident or facility incidents, track follow-up actions, and analyze patterns.</p>
+
+    <button onclick="showIncidentExample()">Report New Incident</button>
+    <hr />
+
+    <div id="incident-example" style="display:none; background:#fffbe6; border:1px solid #ffe066; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Incident Report</h3>
+      <ul>
+        <li><strong>Date:</strong> Feb 20, 2025</li>
+        <li><strong>Type:</strong> Resident Fall (Minor)</li>
+        <li><strong>Location:</strong> Room 102 Bathroom</li>
+        <li><strong>Follow-up:</strong> Increased bathroom checks, no injury</li>
+      </ul>
+    </div>
+
+    <script>
+      function showIncidentExample() {
+        document.getElementById('incident-example').style.display = 'block';
+      }
+    </script>
+
+    <h3>Recent Incidents</h3>
+    <ul>
+      <li>Feb 20 - Resident Fall (Minor) - Follow-up: Increased bathroom checks</li>
+      <li>Feb 10 - Kitchen Spill (No injury) - Staff reminder to use signage</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

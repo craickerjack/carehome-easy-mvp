@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Residents</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html" class="active">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Resident Tracking</h2>
+    <p>Maintain individual resident profiles, health details, and quick status updates.</p>
+
+    <button>Add New Resident</button>
+    <hr />
+
+    <ul>
+      <li>Mary Davis (Room 101) - <a href="#" onclick="showProfile('mary')">View Profile</a> | <a href="#" onclick="showCarePlan('mary')">Care Plan</a></li>
+      <li>John Shepherd (Room 102) - <a href="#" onclick="showProfile('john')">View Profile</a> | <a href="#" onclick="showCarePlan('john')">Care Plan</a></li>
+      <li>Linda Gomez (Room 103) - <a href="#" onclick="showProfile('linda')">View Profile</a> | <a href="#" onclick="showCarePlan('linda')">Care Plan</a></li>
+      <li>Jack Mercer (Room 104) - <a href="#" onclick="showProfile('jack')">View Profile</a> | <a href="#" onclick="showCarePlan('jack')">Care Plan</a></li>
+    </ul>
+
+    <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+      <div id="modal-content" style="background:#fff; padding:2em; border-radius:8px; max-width:400px; margin:auto; position:relative;">
+        <button onclick="closeModal()" style="position:absolute; top:8px; right:12px; background:none; border:none; font-size:1.2em; cursor:pointer;">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script>
+      const profiles = {
+        mary: `<h3>Mary Davis</h3><p><strong>Age:</strong> 82<br><strong>Room:</strong> 101<br><strong>Health:</strong> Hypertension, Arthritis<br><strong>Notes:</strong> Enjoys gardening and group activities.</p>`,
+        john: `<h3>John Shepherd</h3><p><strong>Age:</strong> 77<br><strong>Room:</strong> 102<br><strong>Health:</strong> Diabetes, Mild Dementia<br><strong>Notes:</strong> Needs reminders for medication, likes music therapy.</p>`,
+        linda: `<h3>Linda Gomez</h3><p><strong>Age:</strong> 80<br><strong>Room:</strong> 103<br><strong>Health:</strong> Stroke Recovery<br><strong>Notes:</strong> Physical therapy 2x/week, enjoys painting.</p>`,
+        jack: `<h3>Jack Mercer</h3><p><strong>Age:</strong> 85<br><strong>Room:</strong> 104<br><strong>Health:</strong> COPD<br><strong>Notes:</strong> Needs oxygen support, prefers quiet spaces.</p>`
+      };
+      const carePlans = {
+        mary: `<h3>Mary Davis - Care Plan</h3><ul><li>Monitor blood pressure daily</li><li>Assist with mobility in mornings</li><li>Encourage participation in gardening club</li><li>Medication: Lisinopril (AM), Aspirin (Daily)</li></ul>`,
+        john: `<h3>John Shepherd - Care Plan</h3><ul><li>Blood sugar checks before meals</li><li>Medication reminders (Metformin AM/PM)</li><li>Supervised walks in garden</li><li>Music therapy sessions twice a week</li></ul>`,
+        linda: `<h3>Linda Gomez - Care Plan</h3><ul><li>Physical therapy: Mon/Thu</li><li>Assistance with bathing</li><li>Encourage painting activities</li><li>Monitor for stroke symptoms</li></ul>`,
+        jack: `<h3>Jack Mercer - Care Plan</h3><ul><li>Oxygen support as needed</li><li>Monitor respiratory status</li><li>Quiet time after lunch</li><li>Medication: Inhaler (as needed)</li></ul>`
+      };
+      function showProfile(name) {
+        document.getElementById('modal-body').innerHTML = profiles[name];
+        document.getElementById('modal').style.display = 'flex';
+      }
+      function showCarePlan(name) {
+        document.getElementById('modal-body').innerHTML = carePlans[name];
+        document.getElementById('modal').style.display = 'flex';
+      }
+      function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+      }
+    </script>
+
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

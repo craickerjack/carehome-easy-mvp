@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Staff Training</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html" class="active">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Staff Training & Certification</h2>
+    <p>Log staff credentials, track expiration dates, and schedule training sessions.</p>
+
+    <button onclick="showStaffExample()">Add New Staff Record</button>
+    <hr />
+
+    <div id="staff-example" style="display:none; background:#e6f7ff; border:1px solid #91d5ff; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Staff Record</h3>
+      <ul>
+        <li><strong>Name:</strong> Nurse Maria</li>
+        <li><strong>Certification:</strong> CPR</li>
+        <li><strong>Expires:</strong> 12/2025</li>
+        <li><strong>Notes:</strong> Attended annual training Feb 2025</li>
+      </ul>
+    </div>
+
+    <script>
+      function showStaffExample() {
+        document.getElementById('staff-example').style.display = 'block';
+      }
+    </script>
+
+    <ul>
+      <li>Nurse Maria - CPR Certified (Expires: 12/2025)</li>
+      <li>Care Aide John R. - First Aid Certified (Expires: 09/2025)</li>
+    </ul>
+
+    <h3>Expiring Soon</h3>
+    <p>No certifications expiring within 30 days.</p>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

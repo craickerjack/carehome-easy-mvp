@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CareHome Easy - Admission & Discharge</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html" class="active">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Admission & Discharge Pipeline</h2>
+    <p>Track new resident onboarding tasks and ensure proper discharge procedures when residents leave.</p>
+
+    <button onclick="showExample('admission')">Start New Admission</button>
+    <hr />
+
+    <div id="admission-example" style="display:none; background:#fffbe6; border:1px solid #ffe066; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example New Admission</h3>
+      <ul>
+        <li><strong>Name:</strong> Sarah Green</li>
+        <li><strong>Status:</strong> Paperwork in progress</li>
+        <li><strong>Next Step:</strong> Schedule medical evaluation</li>
+      </ul>
+    </div>
+
+    <script>
+      function showExample(type) {
+        if(type === 'admission') {
+          document.getElementById('admission-example').style.display = 'block';
+        }
+      }
+    </script>
+
+    <h3>Active Admissions</h3>
+    <ul>
+      <li>Prospect: Sarah Green - Paperwork in progress</li>
+      <li>Prospect: Tom Lee - Pending medical records</li>
+    </ul>
+
+    <h3>Discharge Follow-Ups</h3>
+    <ul>
+      <li>Jan 2025 - Robert Fields - Moved to Skilled Nursing Facility (Records sent)</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+CareHome Easy MVP
+==================
+
+## How to Start the Server
+
+1. Open a terminal and navigate to the project directory.
+2. Run the following command:
+
+   python3 -m http.server 8000
+
+This will start a local server at port 8000.
+
+## How to Open the Site
+
+Open your web browser and go to:
+
+   http://localhost:8000
+
+You will see the CareHome Easy dashboard and can navigate to all modules from there.
+
+---
+
+carehome-easy-mvp/
+├── css/
+│   └── style.css
+├── index.html                 (Dashboard / Home)
+├── residents.html             (Resident Tracking)
+├── family.html                (Family Communication)
+├── compliance.html            (Compliance & Regulatory)
+├── reports.html               (Reports & Analytics)
+├── medication.html            (Medication Management)
+├── billing.html               (Billing & Invoicing)
+├── mealplanning.html          (Nutrition & Meal Planning)
+├── appointment.html           (Appointment & Activity Mgmt)
+├── inventory.html             (Inventory & Supplies)
+├── stafftraining.html         (Staff Training & Certification)
+├── incidents.html             (Incident Management)
+├── externalproviders.html     (Communication w/ External Providers)
+├── signage.html               (Digital Signage / Bulletin Board)
+└── admission.html             (Admission & Discharge Pipeline)

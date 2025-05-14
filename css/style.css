@@ -1,0 +1,138 @@
+/* Minimal styling for the MVP prototype */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #35424a;
+  color: #ffffff;
+  padding: 1rem 2rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav {
+  margin: 0.5rem 0;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a.active {
+  background: #ffe066;
+  color: #333;
+  border-radius: 4px;
+  padding: 0.2em 0.7em;
+}
+
+/* Main content area */
+.container {
+  background: #ffffff;
+  margin: 1rem auto;
+  padding: 1rem 2rem;
+  max-width: 1000px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+footer {
+  background: #eee;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Add/replace in style.css for improved mobile nav */
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2.4em;
+  color: #ffe066;
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+  z-index: 1002;
+  cursor: pointer;
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.nav-toggle:active, .nav-toggle:focus {
+  background: #35424a;
+}
+
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #35424a;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75vw;
+    max-width: 320px;
+    height: 100vh;
+    padding: 2em 1em 1em 1.5em;
+    z-index: 1001;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    border-radius: 0 0 0 12px;
+    align-items: flex-start;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-backdrop.show {
+    display: block;
+  }
+  nav {
+    position: relative;
+  }
+  nav a {
+    margin: 0.7em 0;
+    font-size: 1.2em;
+    padding: 0.5em 0.7em;
+    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+    background: none;
+    transition: background 0.2s;
+  }
+  nav a:active, nav a:focus {
+    background: #5c6f7a;
+    color: #ffe066;
+  }
+}

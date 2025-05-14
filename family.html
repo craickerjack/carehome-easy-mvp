@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareHome Easy - Family Communication</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html" class="active">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Family Communication</h2>
+    <p>Stay connected with families through regular updates, announcements, and direct messages.</p>
+
+    <button onclick="showFamilyExample('update')">Send Group Update</button>
+    <button onclick="showFamilyExample('contacts')">Manage Family Contacts</button>
+    <hr />
+
+    <div id="family-update-example" style="display:none; background:#e6f7ff; border:1px solid #91d5ff; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Group Update</h3>
+      <p>"This week, residents enjoyed a gardening session and celebrated two birthdays! All are healthy and happy."</p>
+    </div>
+    <div id="family-contacts-example" style="display:none; background:#fffbe6; border:1px solid #ffe066; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Family Contacts</h3>
+      <ul>
+        <li>Davis Family - mary.davis.family@email.com - (555) 123-1111</li>
+        <li>Shepherd Family - john.shepherd.family@email.com - (555) 123-2222</li>
+      </ul>
+    </div>
+
+    <h3>Recent Messages</h3>
+    <ul>
+      <li><strong>Feb 24:</strong> Email to Davis Family - "Mary had a lovely walk in the garden!"</li>
+      <li><strong>Feb 23:</strong> Query from Shepherd Family - "Can we schedule a video call?" [Reply]</li>
+    </ul>
+
+    <h3>Automated Weekly Summaries</h3>
+    <p>Next Summary Scheduled: <strong>Feb 28</strong></p>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+
+  <script>
+    function showFamilyExample(type) {
+      document.getElementById('family-update-example').style.display = (type === 'update') ? 'block' : 'none';
+      document.getElementById('family-contacts-example').style.display = (type === 'contacts') ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>

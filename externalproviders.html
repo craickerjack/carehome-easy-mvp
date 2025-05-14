@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CareHome Easy - External Providers</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>CareHome Easy</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="residents.html">Residents</a>
+      <a href="family.html">Family Comm</a>
+      <a href="compliance.html">Compliance</a>
+      <a href="reports.html">Reports</a>
+      <a href="medication.html">Medication</a>
+      <a href="billing.html">Billing</a>
+      <a href="mealplanning.html">Meal Plans</a>
+      <a href="appointment.html">Activities</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="stafftraining.html">Staff Training</a>
+      <a href="incidents.html">Incidents</a>
+      <a href="externalproviders.html" class="active">Providers</a>
+      <a href="signage.html">Signage</a>
+      <a href="admission.html">Admission</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Communication with External Providers</h2>
+    <p>Manage contact details and quick messaging for pharmacies, doctors, and healthcare partners.</p>
+
+    <button onclick="showProviderExample()">Add New Provider</button>
+    <hr />
+
+    <div id="provider-example" style="display:none; background:#e6f7ff; border:1px solid #91d5ff; padding:1em; margin-bottom:1em; border-radius:6px;">
+      <h3>Example Provider Entry</h3>
+      <ul>
+        <li><strong>Name:</strong> Pharmacy ABC</li>
+        <li><strong>Type:</strong> Pharmacy</li>
+        <li><strong>Contact:</strong> (555) 123-4567</li>
+        <li><strong>Notes:</strong> Main supplier for resident medications</li>
+      </ul>
+    </div>
+
+    <script>
+      function showProviderExample() {
+        document.getElementById('provider-example').style.display = 'block';
+      }
+    </script>
+
+    <h3>Provider List</h3>
+    <ul>
+      <li>Pharmacy ABC - (555) 123-4567 | <a href="#">Request Refill</a></li>
+      <li>Dr. Smith (General Practitioner) - (555) 987-6543 | <a href="#">Send Update</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 CareHome Easy | Demo MVP
+  </footer>
+</body>
+</html>
