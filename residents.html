@@ -34,12 +34,55 @@
     <button>Add New Resident</button>
     <hr />
 
-    <ul>
-      <li>Mary Davis (Room 101) - <a href="#" onclick="showProfile('mary')">View Profile</a> | <a href="#" onclick="showCarePlan('mary')">Care Plan</a></li>
-      <li>John Shepherd (Room 102) - <a href="#" onclick="showProfile('john')">View Profile</a> | <a href="#" onclick="showCarePlan('john')">Care Plan</a></li>
-      <li>Linda Gomez (Room 103) - <a href="#" onclick="showProfile('linda')">View Profile</a> | <a href="#" onclick="showCarePlan('linda')">Care Plan</a></li>
-      <li>Jack Mercer (Room 104) - <a href="#" onclick="showProfile('jack')">View Profile</a> | <a href="#" onclick="showCarePlan('jack')">Care Plan</a></li>
-    </ul>
+    <div class="residents-grid">
+      <div class="resident-card">
+        <img src="images/mary.jpg" alt="Mary Davis" class="profile-pic">
+        <div class="resident-info">
+          <h3>Mary Davis</h3>
+          <p>Room 101</p>
+          <div class="resident-actions">
+            <a href="#" onclick="showProfile('mary')">View Profile</a> | 
+            <a href="#" onclick="showCarePlan('mary')">Care Plan</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resident-card">
+        <img src="images/john.jpg" alt="John Shepherd" class="profile-pic">
+        <div class="resident-info">
+          <h3>John Shepherd</h3>
+          <p>Room 102</p>
+          <div class="resident-actions">
+            <a href="#" onclick="showProfile('john')">View Profile</a> | 
+            <a href="#" onclick="showCarePlan('john')">Care Plan</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resident-card">
+        <img src="images/linda.jpg" alt="Linda Gomez" class="profile-pic">
+        <div class="resident-info">
+          <h3>Linda Gomez</h3>
+          <p>Room 103</p>
+          <div class="resident-actions">
+            <a href="#" onclick="showProfile('linda')">View Profile</a> | 
+            <a href="#" onclick="showCarePlan('linda')">Care Plan</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resident-card">
+        <img src="images/jack.jpg" alt="Jack Mercer" class="profile-pic">
+        <div class="resident-info">
+          <h3>Jack Mercer</h3>
+          <p>Room 104</p>
+          <div class="resident-actions">
+            <a href="#" onclick="showProfile('jack')">View Profile</a> | 
+            <a href="#" onclick="showCarePlan('jack')">Care Plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
       <div id="modal-content" style="background:#fff; padding:2em; border-radius:8px; max-width:400px; margin:auto; position:relative;">
