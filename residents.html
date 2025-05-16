@@ -99,23 +99,167 @@
         jack: `<h3>Jack Mercer</h3><p><strong>Age:</strong> 85<br><strong>Room:</strong> 104<br><strong>Health:</strong> COPD<br><strong>Notes:</strong> Needs oxygen support, prefers quiet spaces.</p>`
       };
       const carePlans = {
-        mary: `<h3>Mary Davis - Care Plan</h3><ul><li>Monitor blood pressure daily</li><li>Assist with mobility in mornings</li><li>Encourage participation in gardening club</li><li>Medication: Lisinopril (AM), Aspirin (Daily)</li></ul>`,
-        john: `<h3>John Shepherd - Care Plan</h3><ul><li>Blood sugar checks before meals</li><li>Medication reminders (Metformin AM/PM)</li><li>Supervised walks in garden</li><li>Music therapy sessions twice a week</li></ul>`,
-        linda: `<h3>Linda Gomez - Care Plan</h3><ul><li>Physical therapy: Mon/Thu</li><li>Assistance with bathing</li><li>Encourage painting activities</li><li>Monitor for stroke symptoms</li></ul>`,
-        jack: `<h3>Jack Mercer - Care Plan</h3><ul><li>Oxygen support as needed</li><li>Monitor respiratory status</li><li>Quiet time after lunch</li><li>Medication: Inhaler (as needed)</li></ul>`
+        mary: {
+          title: "Mary Davis - Care Plan",
+          items: [
+            "Monitor blood pressure daily",
+            "Assist with mobility in mornings",
+            "Encourage participation in gardening club",
+            "Medication: Lisinopril (AM), Aspirin (Daily)"
+          ]
+        },
+        john: {
+          title: "John Shepherd - Care Plan",
+          items: [
+            "Blood sugar checks before meals",
+            "Medication reminders (Metformin AM/PM)",
+            "Supervised walks in garden",
+            "Music therapy sessions twice a week"
+          ]
+        },
+        linda: {
+          title: "Linda Gomez - Care Plan",
+          items: [
+            "Physical therapy: Mon/Thu",
+            "Assistance with bathing",
+            "Encourage painting activities",
+            "Monitor for stroke symptoms"
+          ]
+        },
+        jack: {
+          title: "Jack Mercer - Care Plan",
+          items: [
+            "Oxygen support as needed",
+            "Monitor respiratory status",
+            "Quiet time after lunch",
+            "Medication: Inhaler (as needed)"
+          ]
+        }
       };
+
       function showProfile(name) {
         document.getElementById('modal-body').innerHTML = profiles[name];
         document.getElementById('modal').style.display = 'flex';
       }
+
       function showCarePlan(name) {
-        document.getElementById('modal-body').innerHTML = carePlans[name];
+        const plan = carePlans[name];
+        let html = `<h3>${plan.title}</h3>
+                   <div id="care-plan-content">
+                     <ul id="care-plan-items">`;
+        
+        plan.items.forEach((item, index) => {
+          html += `<li id="item-${index}">
+                    <span class="care-item">${item}</span>
+                    <button onclick="editCareItem('${name}', ${index})" class="edit-btn">Edit</button>
+                  </li>`;
+        });
+        
+        html += `</ul>
+                 <button onclick="addCareItem('${name}')" class="add-btn">Add New Item</button>
+               </div>`;
+        
+        document.getElementById('modal-body').innerHTML = html;
         document.getElementById('modal').style.display = 'flex';
       }
+
+      function editCareItem(name, index) {
+        const item = carePlans[name].items[index];
+        const li = document.getElementById(`item-${index}`);
+        li.innerHTML = `
+          <input type="text" value="${item}" class="edit-input">
+          <button onclick="saveCareItem('${name}', ${index})" class="save-btn">Save</button>
+          <button onclick="cancelEdit('${name}', ${index})" class="cancel-btn">Cancel</button>
+        `;
+      }
+
+      function saveCareItem(name, index) {
+        const input = document.querySelector(`#item-${index} .edit-input`);
+        const newValue = input.value.trim();
+        if (newValue) {
+          carePlans[name].items[index] = newValue;
+          showCarePlan(name);
+        }
+      }
+
+      function cancelEdit(name, index) {
+        showCarePlan(name);
+      }
+
+      function addCareItem(name) {
+        const itemsList = document.getElementById('care-plan-items');
+        const newIndex = carePlans[name].items.length;
+        carePlans[name].items.push("New care item");
+        
+        const li = document.createElement('li');
+        li.id = `item-${newIndex}`;
+        li.innerHTML = `
+          <input type="text" value="New care item" class="edit-input">
+          <button onclick="saveCareItem('${name}', ${newIndex})" class="save-btn">Save</button>
+          <button onclick="cancelEdit('${name}', ${newIndex})" class="cancel-btn">Cancel</button>
+        `;
+        itemsList.appendChild(li);
+      }
+
       function closeModal() {
         document.getElementById('modal').style.display = 'none';
       }
     </script>
+
+    <style>
+      .edit-btn, .save-btn, .cancel-btn, .add-btn {
+        padding: 4px 8px;
+        margin-left: 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+
+      .edit-btn {
+        background: #4CAF50;
+        color: white;
+      }
+
+      .save-btn {
+        background: #2196F3;
+        color: white;
+      }
+
+      .cancel-btn {
+        background: #f44336;
+        color: white;
+      }
+
+      .add-btn {
+        background: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        margin-top: 16px;
+      }
+
+      .edit-input {
+        padding: 4px 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 70%;
+      }
+
+      #care-plan-items {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #care-plan-items li {
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .care-item {
+        flex-grow: 1;
+      }
+    </style>
 
   </div>
 
