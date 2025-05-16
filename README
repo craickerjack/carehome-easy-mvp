@@ -4,37 +4,72 @@ CareHome Easy MVP
 ## How to Start the Server
 
 1. Open a terminal and navigate to the project directory.
-2. Run the following command:
+2. Create and activate a virtual environment (optional but recommended):
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
+3. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the Flask server:
+   ```bash
+   python app.py
+   ```
 
-   python3 -m http.server 8000
-
-This will start a local server at port 8000.
+This will start a local server at port 5000.
 
 ## How to Open the Site
 
 Open your web browser and go to:
 
-   http://localhost:8000
+   http://localhost:5000
 
 You will see the CareHome Easy dashboard and can navigate to all modules from there.
 
 ---
 
 carehome-easy-mvp/
+├── app.py                    (Flask backend server)
+├── carehome.db              (SQLite database)
+├── requirements.txt         (Python dependencies)
 ├── css/
 │   └── style.css
-├── index.html                 (Dashboard / Home)
-├── residents.html             (Resident Tracking)
-├── family.html                (Family Communication)
-├── compliance.html            (Compliance & Regulatory)
-├── reports.html               (Reports & Analytics)
-├── medication.html            (Medication Management)
-├── billing.html               (Billing & Invoicing)
-├── mealplanning.html          (Nutrition & Meal Planning)
-├── appointment.html           (Appointment & Activity Mgmt)
-├── inventory.html             (Inventory & Supplies)
-├── stafftraining.html         (Staff Training & Certification)
-├── incidents.html             (Incident Management)
-├── externalproviders.html     (Communication w/ External Providers)
-├── signage.html               (Digital Signage / Bulletin Board)
-└── admission.html             (Admission & Discharge Pipeline)
+├── index.html               (Dashboard / Home)
+├── residents.html           (Resident Tracking)
+├── family.html              (Family Communication)
+├── compliance.html          (Compliance & Regulatory)
+├── reports.html             (Reports & Analytics)
+├── medication.html          (Medication Management)
+├── billing.html             (Billing & Invoicing)
+├── mealplanning.html        (Nutrition & Meal Planning)
+├── appointment.html         (Appointment & Activity Mgmt)
+├── inventory.html           (Inventory & Supplies)
+├── stafftraining.html       (Staff Training & Certification)
+├── incidents.html           (Incident Management)
+├── externalproviders.html   (Communication w/ External Providers)
+├── signage.html             (Digital Signage / Bulletin Board)
+└── admission.html           (Admission & Discharge Pipeline)
+
+---
+
+## Hosting on GitHub Pages
+
+1. Go to your repository on GitHub (e.g., https://github.com/craickerjack/carehome-easy-mvp)
+2. Click **Settings** (top right)
+3. In the left sidebar, click **Pages** (or "Pages" under "Code and automation")
+4. Under **Build and deployment**:
+   - **Source**: Select `Deploy from a branch`
+   - **Branch**: Select `main` and `/ (root)` for the folder
+5. Click **Save**
+6. After a minute or two, your site will be live at:
+   - https://craickerjack.github.io/carehome-easy-mvp/
+
+**Note:** The GitHub Pages hosting is for static content only. To use the care plan features that require the database, you'll need to deploy the Flask backend to a proper hosting service.
+
+**Tip:**
+- Make sure your internal links are relative (e.g., `href="residents.html"`)
+- If you update your site, just push changes to GitHub and it will redeploy automatically
+
+---

@@ -98,73 +98,97 @@
         linda: `<h3>Linda Gomez</h3><p><strong>Age:</strong> 80<br><strong>Room:</strong> 103<br><strong>Health:</strong> Stroke Recovery<br><strong>Notes:</strong> Physical therapy 2x/week, enjoys painting.</p>`,
         jack: `<h3>Jack Mercer</h3><p><strong>Age:</strong> 85<br><strong>Room:</strong> 104<br><strong>Health:</strong> COPD<br><strong>Notes:</strong> Needs oxygen support, prefers quiet spaces.</p>`
       };
-      const carePlans = {
-        mary: {
-          title: "Mary Davis - Care Plan",
-          items: [
-            "Monitor blood pressure daily",
-            "Assist with mobility in mornings",
-            "Encourage participation in gardening club",
-            "Medication: Lisinopril (AM), Aspirin (Daily)"
-          ]
-        },
-        john: {
-          title: "John Shepherd - Care Plan",
-          items: [
-            "Blood sugar checks before meals",
-            "Medication reminders (Metformin AM/PM)",
-            "Supervised walks in garden",
-            "Music therapy sessions twice a week"
-          ]
-        },
-        linda: {
-          title: "Linda Gomez - Care Plan",
-          items: [
-            "Physical therapy: Mon/Thu",
-            "Assistance with bathing",
-            "Encourage painting activities",
-            "Monitor for stroke symptoms"
-          ]
-        },
-        jack: {
-          title: "Jack Mercer - Care Plan",
-          items: [
-            "Oxygen support as needed",
-            "Monitor respiratory status",
-            "Quiet time after lunch",
-            "Medication: Inhaler (as needed)"
-          ]
+
+      async function showCarePlan(name) {
+        try {
+          const response = await fetch(`http://localhost:5000/api/care-plans/${name}`);
+          const plan = await response.json();
+          
+          let html = `<h3>${plan.title}</h3>
+                     <div id="care-plan-content">
+                       <ul id="care-plan-items">`;
+          
+          plan.items.forEach((item, index) => {
+            html += `<li id="item-${index}">
+                      <span class="care-item">${item}</span>
+                      <button onclick="editCareItem('${name}', ${index})" class="edit-btn">Edit</button>
+                    </li>`;
+          });
+          
+          html += `</ul>
+                   <button onclick="addCareItem('${name}')" class="add-btn">Add New Item</button>
+                 </div>`;
+          
+          document.getElementById('modal-body').innerHTML = html;
+          document.getElementById('modal').style.display = 'flex';
+        } catch (error) {
+          console.error('Error fetching care plan:', error);
+          alert('Error loading care plan. Please try again.');
         }
-      };
+      }
+
+      async function saveCareItem(name, index) {
+        const input = document.querySelector(`#item-${index} .edit-input`);
+        const newValue = input.value.trim();
+        if (newValue) {
+          try {
+            const response = await fetch(`http://localhost:5000/api/care-plans/${name}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                index: index,
+                text: newValue
+              })
+            });
+            
+            if (response.ok) {
+              showCarePlan(name);
+            } else {
+              throw new Error('Failed to save care plan item');
+            }
+          } catch (error) {
+            console.error('Error saving care plan item:', error);
+            alert('Error saving changes. Please try again.');
+          }
+        }
+      }
+
+      async function addCareItem(name) {
+        const itemsList = document.getElementById('care-plan-items');
+        const newIndex = itemsList.children.length;
+        
+        try {
+          const response = await fetch(`http://localhost:5000/api/care-plans/${name}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              index: newIndex,
+              text: "New care item"
+            })
+          });
+          
+          if (response.ok) {
+            showCarePlan(name);
+          } else {
+            throw new Error('Failed to add care plan item');
+          }
+        } catch (error) {
+          console.error('Error adding care plan item:', error);
+          alert('Error adding new item. Please try again.');
+        }
+      }
 
       function showProfile(name) {
         document.getElementById('modal-body').innerHTML = profiles[name];
         document.getElementById('modal').style.display = 'flex';
       }
 
-      function showCarePlan(name) {
-        const plan = carePlans[name];
-        let html = `<h3>${plan.title}</h3>
-                   <div id="care-plan-content">
-                     <ul id="care-plan-items">`;
-        
-        plan.items.forEach((item, index) => {
-          html += `<li id="item-${index}">
-                    <span class="care-item">${item}</span>
-                    <button onclick="editCareItem('${name}', ${index})" class="edit-btn">Edit</button>
-                  </li>`;
-        });
-        
-        html += `</ul>
-                 <button onclick="addCareItem('${name}')" class="add-btn">Add New Item</button>
-               </div>`;
-        
-        document.getElementById('modal-body').innerHTML = html;
-        document.getElementById('modal').style.display = 'flex';
-      }
-
       function editCareItem(name, index) {
-        const item = carePlans[name].items[index];
+        const item = profiles[name].split('<br>')[index].split(': ')[1];
         const li = document.getElementById(`item-${index}`);
         li.innerHTML = `
           <input type="text" value="${item}" class="edit-input">
@@ -173,32 +197,8 @@
         `;
       }
 
-      function saveCareItem(name, index) {
-        const input = document.querySelector(`#item-${index} .edit-input`);
-        const newValue = input.value.trim();
-        if (newValue) {
-          carePlans[name].items[index] = newValue;
-          showCarePlan(name);
-        }
-      }
-
       function cancelEdit(name, index) {
         showCarePlan(name);
-      }
-
-      function addCareItem(name) {
-        const itemsList = document.getElementById('care-plan-items');
-        const newIndex = carePlans[name].items.length;
-        carePlans[name].items.push("New care item");
-        
-        const li = document.createElement('li');
-        li.id = `item-${newIndex}`;
-        li.innerHTML = `
-          <input type="text" value="New care item" class="edit-input">
-          <button onclick="saveCareItem('${name}', ${newIndex})" class="save-btn">Save</button>
-          <button onclick="cancelEdit('${name}', ${newIndex})" class="cancel-btn">Cancel</button>
-        `;
-        itemsList.appendChild(li);
       }
 
       function closeModal() {
