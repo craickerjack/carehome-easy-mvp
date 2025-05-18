@@ -32,7 +32,7 @@ You will see the CareHome Easy dashboard and can navigate to all modules from th
 
 carehome-easy-mvp/
 ├── app.py                    (Flask backend server)
-├── carehome.db              (SQLite database)
+├── carehome.db              (SQLite database, created automatically when server runs)
 ├── requirements.txt         (Python dependencies)
 ├── css/
 │   └── style.css
