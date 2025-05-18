@@ -188,8 +188,8 @@
       }
 
       function editCareItem(name, index) {
-        const item = profiles[name].split('<br>')[index].split(': ')[1];
         const li = document.getElementById(`item-${index}`);
+        const item = li.querySelector('.care-item').textContent;
         li.innerHTML = `
           <input type="text" value="${item}" class="edit-input">
           <button onclick="saveCareItem('${name}', ${index})" class="save-btn">Save</button>
