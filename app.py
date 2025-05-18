@@ -25,9 +25,6 @@ def init_db():
 def index():
     return send_from_directory('.', 'index.html')
 
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory('.', path)
 
 @app.route('/api/care-plans/<resident_name>', methods=['GET'])
 def get_care_plan(resident_name):
@@ -58,6 +55,10 @@ def update_care_plan(resident_name):
     conn.close()
     
     return jsonify({'success': True})
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory('.', path)
+
 
 if __name__ == '__main__':
     init_db()
