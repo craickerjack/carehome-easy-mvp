@@ -73,3 +73,19 @@ carehome-easy-mvp/
 - If you update your site, just push changes to GitHub and it will redeploy automatically
 
 ---
+
+## Live Demo
+
+The static version of the application is available at:
+
+   https://craickerjack.github.io/carehome-easy-mvp/index.html
+
+This URL provides access to all static features of the application.
+
+## Local Development
+
+For local development with database features, the application is available at:
+
+   http://127.0.0.1:5000
+
+This URL provides access to all features including the care plan database functionality.
