@@ -1,4 +1,8 @@
 flask==3.0.2
 flask-cors==4.0.0
 pytest==8.0.0
+gunicorn==21.2.0
+cloud-sql-python-connector==1.7.0
+pg8000==1.30.3
+google-cloud-storage==2.14.0
 
